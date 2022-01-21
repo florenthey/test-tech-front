@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 
 export default function Members({ members }) {
-  const membersList = members.map((member) => {
+  const membersList = members?.map((member) => {
     const { first_name, last_name, id } = member;
     return (
       <li>
@@ -14,7 +14,7 @@ export default function Members({ members }) {
   });
 
   const membersDisplay =
-    members.length > 0 ? <ul>{membersList}</ul> : <p>Non renseignés</p>;
+    members?.length > 0 ? <ul>{membersList}</ul> : <p>Non renseignés</p>;
 
   return membersDisplay;
 }
