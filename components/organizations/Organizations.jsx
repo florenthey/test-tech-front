@@ -12,8 +12,8 @@ export default function Organizations({ organizations }) {
         <h2>{name}</h2>
         <p>{description}</p>
         <Link
-          // as={`/organizations/${id}/${prettyName}`}
-          href={`/organizations/${id}`}
+          // as={`/organisations/${id}/${prettyName}`}
+          href={`/organisations/${id}`}
           passHref
         >
           <a>Acceder à la l'organisation</a>

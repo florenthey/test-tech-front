@@ -1,28 +1,22 @@
-import { getOrganization, getOrganizations } from "@services/organizations";
-import Link from "next/link";
 import React from "react";
+import Members from "@components/members/Members";
+import Meta from "@root/components/core/Meta";
+import { getOrganization, getOrganizations } from "@services/organizations";
 
 export default function index({ organization }) {
   const { name, description, members } = organization;
-
-  const membersList = members.map((member) => {
-    const { first_name, last_name, id } = member;
-
-    return (
-      <li>
-        <Link href={`/members/${id}`} passHref>
-          <a>{`${last_name} ${first_name}`}</a>
-        </Link>
-      </li>
-    );
-  });
+  const meta = {
+    name: `Microbiome studio - ${name}`,
+    description: `Détails sur l'organisation ${name}`,
+  };
 
   return (
     <div>
+      <Meta meta={meta} />
       <h1>{name}</h1>
       <p>{description}</p>
       <p>membres:</p>
-      <ul>{membersList}</ul>
+      <Members members={members} />
     </div>
   );
 }

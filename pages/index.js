@@ -1,28 +1,18 @@
 import styled from "styled-components";
-import Organizations from "../componants/organizations/Organizations";
-import { getOrganizations } from "../services/organizations";
+import Meta from "@root/components/core/Meta";
 
-const Title = styled.h1`
-  font-size: 50px;
-  color: ${({ theme }) => theme.colors.primary};
-`;
+const meta = {
+  name: "Microbiome studio - Accueil",
+  description:
+    "Accueil du site web de Microbiome studio pour la gestion de projets ",
+};
 
-export default function Home({ organizations }) {
+export default function Home() {
   return (
     <div>
-      <Organizations organizations={organizations} />
+      <h1>Microbiome Studio</h1>
+      <Meta meta={meta} />
+      <div>Youpi c'est la home</div>
     </div>
   );
-}
-
-export async function getStaticProps() {
-  const organizations = await getOrganizations(0, 100).then(
-    (response) => response
-  );
-
-  return {
-    props: {
-      organizations,
-    },
-  };
 }
