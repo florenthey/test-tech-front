@@ -15,7 +15,9 @@ export const GlobalStyle = createGlobalStyle`
   }   
   ul {
     list-style: none;
-    padding-inline-start: 0
+    padding-inline-start: 0;
+    margin: 0;
+    padding: 0;
   }
 
   h1 {

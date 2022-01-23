@@ -1,16 +1,17 @@
 import React from "react";
 import Link from "next/link";
 import { A, Section, SubSection } from "@root/styles/Global";
+import { prettyName } from "@utils/upperCase";
 
 export default function Members({ members }) {
   const membersList = members?.map((member) => {
     const { first_name, last_name, id } = member;
     return (
       <li>
-        <SubSection>
+        <SubSection background="red">
           <Link href={`/membres/${id}`} passHref>
             <A>
-              <b>{last_name}</b> {first_name}
+              <b>{prettyName(last_name)}</b> {prettyName(first_name)}
             </A>
           </Link>
         </SubSection>
@@ -24,7 +25,9 @@ export default function Members({ members }) {
         <Section>{membersList}</Section>
       </ul>
     ) : (
-      <p>Non renseignés</p>
+      <Section>
+        <p>Non renseignés</p>
+      </Section>
     );
 
   return membersDisplay;

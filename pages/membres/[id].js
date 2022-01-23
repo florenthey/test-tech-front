@@ -1,6 +1,7 @@
 import Meta from "@root/components/core/Meta";
 import CreateProject from "@root/components/form/CreateProject";
 import { Inner, Section, TitleSection } from "@root/styles/Global";
+import { prettyName } from "@root/utils/upperCase";
 import { getMember, getMembers } from "@services/members";
 import React from "react";
 
@@ -19,7 +20,9 @@ export default function index({ member }) {
     <Inner>
       <Meta meta={meta} />
       <Section>
-        <h1>{`${first_name} ${last_name}`}</h1>
+        <h1>
+          {prettyName(first_name)} {prettyName(last_name)}
+        </h1>
         <p>{organizationName}</p>
         <p>contact: {email}</p>
       </Section>

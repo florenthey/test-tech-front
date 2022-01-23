@@ -3,7 +3,7 @@ import Members from "@components/members/Members";
 import Meta from "@root/components/core/Meta";
 import { getMembers } from "@services/members";
 import { getOrganizations } from "@root/services/organizations";
-import { Inner } from "@styles/Global";
+import { Inner, Select } from "@styles/Global";
 
 import { useForm } from "react-hook-form";
 
@@ -41,10 +41,10 @@ export default function index({ members, organizations }) {
       <Meta meta={meta} />
       <h1>Membres</h1>
       <form>
-        <select defaultValue={0} name="filters" {...register("filters")}>
+        <Select defaultValue={0} name="filters" {...register("filters")}>
           <option value="">filtrer par organisation:</option>
           {filters}
-        </select>
+        </Select>
       </form>
       <Members members={filteredMembers} />
     </Inner>

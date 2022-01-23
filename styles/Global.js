@@ -8,13 +8,18 @@ export const Inner = styled.div`
   margin: auto 50px;
 `;
 
+export const WrapperSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+`;
+
 export const Section = styled.div`
   display: flex;
   flex-direction: column;
   background: whitesmoke;
   padding: 20px;
   border-radius: 10px;
-  margin: 5px;
 `;
 
 export const SubSection = styled.div`
@@ -32,4 +37,11 @@ export const TitleSection = styled.div`
 
 export const A = styled.a`
   color: #ec5990;
+`;
+
+export const Select = styled.select`
+  border: none;
+  border-radius: 4px;
+  padding: 2px;
+  margin-bottom: 10px;
 `;

@@ -2,10 +2,17 @@ import React from "react";
 import Members from "@components/members/Members";
 import Meta from "@root/components/core/Meta";
 import { getOrganization, getOrganizations } from "@services/organizations";
-import { Inner, Section, TitleSection } from "@root/styles/Global";
+import {
+  Inner,
+  WrapperSection,
+  Section,
+  TitleSection,
+} from "@root/styles/Global";
+import { prettyName } from "@utils/upperCase";
 
 export default function index({ organization }) {
   const { name, description, members } = organization;
+
   const meta = {
     name: `Microbiome studio - ${name}`,
     description: `Détails sur l'organisation ${name}`,
@@ -14,15 +21,17 @@ export default function index({ organization }) {
   return (
     <Inner>
       <Meta meta={meta} />
-      <h1>{name}</h1>
-      <Section>
-        <TitleSection>Presentation</TitleSection>
-        <p>{description}</p>
-      </Section>
-      <Section>
-        <TitleSection>L'équipe</TitleSection>
-        <Members members={members} />
-      </Section>
+      <h1>{prettyName(name)}</h1>
+      <WrapperSection>
+        <Section>
+          <TitleSection>Presentation</TitleSection>
+          <p>{description}</p>
+        </Section>
+        <Section>
+          <TitleSection>L'équipe</TitleSection>
+          <Members members={members} />
+        </Section>
+      </WrapperSection>
     </Inner>
   );
 }
