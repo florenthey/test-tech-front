@@ -1,21 +1,23 @@
 import Link from "next/link";
 import React from "react";
+import { A } from "@root/styles/Global";
+
 import { Wrapper } from "./navbar.style";
 
 export default function Navbar() {
   return (
     <Wrapper>
       <Link href="/" passHref>
-        <a>Accueil</a>
+        <A>ACCUEIL</A>
       </Link>
       <Link href="/organisations" passHref>
-        <a>Organisations</a>
+        <A>ORGANISATIONS</A>
       </Link>
       <Link href="/membres" passHref>
-        <a>Membres</a>
+        <A>MEMBRES</A>
       </Link>
       <Link href="/projets" passHref>
-        <a>Projets</a>
+        <A>PROJECTS</A>
       </Link>
     </Wrapper>
   );

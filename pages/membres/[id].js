@@ -1,6 +1,11 @@
 import Meta from "@root/components/core/Meta";
 import CreateProject from "@root/components/form/CreateProject";
-import { Inner, Section, TitleSection } from "@root/styles/Global";
+import {
+  Inner,
+  Section,
+  TitleSection,
+  WrapperSection,
+} from "@root/styles/Global";
 import { prettyName } from "@root/utils/upperCase";
 import { getMember, getMembers } from "@services/members";
 import React from "react";
@@ -19,22 +24,24 @@ export default function index({ member }) {
   return (
     <Inner>
       <Meta meta={meta} />
-      <Section>
-        <h1>
-          {prettyName(first_name)} {prettyName(last_name)}
-        </h1>
-        <p>{organizationName}</p>
-        <p>contact: {email}</p>
-      </Section>
-      {projects.length > 0 && (
+      <WrapperSection>
         <Section>
-          <TitleSection>Projets:</TitleSection>
-          {projectsDisplay}
+          <h1>
+            {prettyName(first_name)} {prettyName(last_name)}
+          </h1>
+          <p>{organizationName}</p>
+          <p>contact: {email}</p>
         </Section>
-      )}
-      <Section>
-        <CreateProject member={member} />
-      </Section>
+        {projects.length > 0 && (
+          <Section>
+            <TitleSection>Projets:</TitleSection>
+            {projectsDisplay}
+          </Section>
+        )}
+        <Section>
+          <CreateProject member={member} />
+        </Section>
+      </WrapperSection>
     </Inner>
   );
 }

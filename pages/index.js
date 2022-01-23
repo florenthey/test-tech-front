@@ -15,7 +15,8 @@ export default function Home() {
     <Inner>
       <Meta meta={meta} />
       <Wrapper>
-        <h1>Microbiome Studio</h1>
+        <h1>MiCROBIOME STUDIO</h1>
+        <h2>APPLICATION DE GESTION DE PROJETS</h2>
         <ul>
           <li></li>
         </ul>

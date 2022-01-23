@@ -11,7 +11,7 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-family: "Montserrat", sans-serif;
     font-size: 16px;
-    background: #d9d7d7;
+    background: #f5e649;
   }   
   ul {
     list-style: none;
@@ -23,6 +23,11 @@ export const GlobalStyle = createGlobalStyle`
   h1 {
     text-align:center;
     margin-bottom: 50px;
+    color: #a13580;
+  }
+
+  h2 {
+    color: #a13580;
   }
 
   a { 

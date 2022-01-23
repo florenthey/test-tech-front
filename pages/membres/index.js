@@ -3,7 +3,7 @@ import Members from "@components/members/Members";
 import Meta from "@root/components/core/Meta";
 import { getMembers } from "@services/members";
 import { getOrganizations } from "@root/services/organizations";
-import { Inner, Select } from "@styles/Global";
+import { Inner, Section, Select } from "@styles/Global";
 
 import { useForm } from "react-hook-form";
 
@@ -46,7 +46,9 @@ export default function index({ members, organizations }) {
           {filters}
         </Select>
       </form>
-      <Members members={filteredMembers} />
+      <Section>
+        <Members members={filteredMembers} />
+      </Section>
     </Inner>
   );
 }

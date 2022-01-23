@@ -11,28 +11,28 @@ export const Inner = styled.div`
 export const WrapperSection = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: ${({ gap }) => gap || "5px"};
 `;
 
 export const Section = styled.div`
   display: flex;
   flex-direction: column;
-  background: whitesmoke;
+  gap: ${({ gap }) => gap || "none"};
+  background: ${({ background }) => background || "whitesmoke"};
   padding: 20px;
   border-radius: 10px;
 `;
 
 export const SubSection = styled.div`
   display: flex;
-  flex-direction: column;
-  background: whitesmoke;
+  flex-direction: ${({ flexDirection }) => flexDirection || "column"};
+  justify-content: space-between;
+  align-items: center;
+  background: ${({ background }) => background || "whitesmoke"};
   padding: 15px 15px 15px 0;
-  border-radius: 10px;
+  border-radius: 8px;
+  padding: 10px;
   margin: 5px;
-`;
-
-export const TitleSection = styled.div`
-  font-weight: bold;
 `;
 
 export const A = styled.a`

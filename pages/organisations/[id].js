@@ -22,13 +22,13 @@ export default function index({ organization }) {
     <Inner>
       <Meta meta={meta} />
       <h1>{prettyName(name)}</h1>
-      <WrapperSection>
+      <WrapperSection gap="10px">
         <Section>
-          <TitleSection>Presentation</TitleSection>
+          <h2>Presentation</h2>
           <p>{description}</p>
         </Section>
-        <Section>
-          <TitleSection>L'équipe</TitleSection>
+        <Section gap="15px">
+          <h2>L'équipe</h2>
           <Members members={members} />
         </Section>
       </WrapperSection>

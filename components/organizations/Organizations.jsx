@@ -1,8 +1,8 @@
-import { A, Section } from "@root/styles/Global";
+import { A, Section, WrapperSection } from "@root/styles/Global";
 import { prettyName } from "@utils/upperCase";
 import Link from "next/link";
 import React from "react";
-import { Wrapper, List } from "./organizations.style";
+import { Wrapper } from "./organizations.style";
 
 export default function Organizations({ organizations }) {
   const organizationsDisplay = organizations?.map((organization) => {
@@ -22,7 +22,7 @@ export default function Organizations({ organizations }) {
   return (
     <Wrapper>
       <h1>Organisations et entreprises</h1>
-      <List>{organizationsDisplay}</List>
+      <WrapperSection gap="40px">{organizationsDisplay}</WrapperSection>
     </Wrapper>
   );
 }
