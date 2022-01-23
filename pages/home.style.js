@@ -16,8 +16,10 @@ export const PagesSection = styled.div`
 export const PageSection = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   background: whitesmoke;
   width: 100%;
   min-height: 200px;
   border-radius: 10px;
+  padding-bottom: 20px;
 `;

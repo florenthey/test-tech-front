@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import Meta from "@root/components/core/Meta";
 
 import { A, Inner } from "@root/styles/Global";
@@ -13,17 +12,22 @@ const meta = {
 };
 
 const pagesSections = [
-  { title: "organisations", path: "/organisations" },
-  { title: "membres", path: "/membres" },
-  { title: "projets", path: "/projets" },
+  {
+    title: "organisations",
+    path: "/organisations",
+    img: "/images/home/organization.jpg",
+  },
+  { title: "membres", path: "/membres", img: "/images/home/member.jpg" },
+  { title: "projets", path: "/projets", img: "/images/home/project.jpg" },
 ];
 
 const pageSectionsDisplay = pagesSections.map((pageSection) => {
-  const { title, path } = pageSection;
+  const { title, img, path } = pageSection;
 
   return (
     <PageSection>
       <h3>{prettyName(title)}</h3>
+      <img src={img} />
       <Link href={path} passHref>
         <A>Accéder à la liste des {title}</A>
       </Link>
@@ -38,6 +42,7 @@ export default function Home() {
       <Wrapper>
         <h1>MiCROBIOME STUDIO</h1>
         <h2>APPLICATION DE GESTION DE PROJETS</h2>
+        {/* Replace by a carousel of the latest projects */}
         <PagesSection>{pageSectionsDisplay}</PagesSection>
       </Wrapper>
     </Inner>

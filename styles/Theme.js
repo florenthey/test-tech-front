@@ -34,4 +34,10 @@ export const GlobalStyle = createGlobalStyle`
     color: inherit; 
     text-decoration:none; 
   } 
+
+  img {
+    width: auto;
+    max-width: 90%;
+    margin-bottom: 20px;
+  }
  `;
