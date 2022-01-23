@@ -17,7 +17,7 @@ export default function Navbar() {
         <A>MEMBRES</A>
       </Link>
       <Link href="/projets" passHref>
-        <A>PROJECTS</A>
+        <A>PROJETS</A>
       </Link>
     </Wrapper>
   );
