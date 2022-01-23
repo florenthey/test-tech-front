@@ -1,8 +1,9 @@
 import { createProjectForMember } from "@root/services/members";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { Wrapper } from "./createProject.style";
 
-export default function AddProject({ member }) {
+export default function AddProject({ member, refetch }) {
   const { register, handleSubmit } = useForm();
   const { id } = member;
 
@@ -13,26 +14,29 @@ export default function AddProject({ member }) {
       description: description,
     };
     await createProjectForMember(id, body);
+    await refetch();
   };
 
   return (
     <div>
       <h2>Ajouter un projet</h2>
       <form method="POST" onSubmit={handleSubmit(onSubmit)}>
-        <input
-          type="text"
-          name="code"
-          placeholder="code"
-          {...register("code")}
-        />
-        <input
-          type="text"
-          name="description"
-          placeholder="description"
-          {...register("description")}
-          required
-        ></input>
-        <button type="submit">Envoyer</button>
+        <Wrapper>
+          <input
+            type="text"
+            name="code"
+            placeholder="code"
+            {...register("code")}
+          />
+          <input
+            type="text"
+            name="description"
+            placeholder="description"
+            {...register("description")}
+            required
+          ></input>
+          <button type="submit">Envoyer</button>
+        </Wrapper>
       </form>
     </div>
   );

@@ -1,13 +1,29 @@
 import Meta from "@root/components/core/Meta";
-import CreateProject from "@root/components/form/CreateProject";
-import { Inner, Section, WrapperSection } from "@root/styles/Global";
+import CreateProject from "@root/components/form/createProject/CreateProject";
+import {
+  Inner,
+  Section,
+  WrapperSection,
+  WrapperDoubleSection,
+} from "@root/styles/Global";
 import { prettyName } from "@root/utils/upperCase";
 import { getMember, getMembers } from "@services/members";
+import { useRouter } from "next/router";
 import React from "react";
 
 export default function index({ member }) {
-  const { last_name, first_name, email, projects, organization } = member;
+  const { last_name, first_name, email, projects, id, organization } = member;
   const organizationName = organization.name;
+  const router = useRouter();
+
+  const meta = {
+    name: `Microbiome studio - ${last_name} ${first_name}`,
+    description: `Profil de ${last_name} ${first_name}, membre de l'organisation ${organizationName}`,
+  };
+
+  const refreshData = () => {
+    router.replace(router.asPath);
+  };
 
   const projectsDisplay =
     projects.length > 0 ? (
@@ -16,30 +32,25 @@ export default function index({ member }) {
       <p>Pas de projet</p>
     );
 
-  const meta = {
-    name: `Microbiome studio - ${last_name} ${first_name}`,
-    description: `Profil de ${last_name} ${first_name}, membre de l'organisation ${organizationName}`,
-  };
-
   return (
     <Inner>
       <Meta meta={meta} />
       <WrapperSection>
-        <Section>
-          <h1>
-            {prettyName(first_name)} {prettyName(last_name)}
-          </h1>
-          <p>{organizationName}</p>
-          <p>contact: {email}</p>
-        </Section>
-
+        <WrapperDoubleSection>
+          <Section width="100%">
+            <h1>
+              {prettyName(first_name)} {prettyName(last_name)}
+            </h1>
+            <p>{organizationName}</p>
+            <p>{email}</p>
+          </Section>
+          <Section background="#ec5990">
+            <CreateProject member={member} refreshData={refreshData} />
+          </Section>
+        </WrapperDoubleSection>
         <Section>
           <h2>Projets</h2>
           {projectsDisplay}
-        </Section>
-
-        <Section>
-          <CreateProject member={member} />
         </Section>
       </WrapperSection>
     </Inner>

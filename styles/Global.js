@@ -14,6 +14,15 @@ export const WrapperSection = styled.div`
   gap: ${({ gap }) => gap || "5px"};
 `;
 
+export const WrapperDoubleSection = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 15px;
+  background: whitesmoke;
+  border-radius: 10px;
+`;
+
 export const Section = styled.div`
   display: flex;
   flex-direction: column;
@@ -21,6 +30,7 @@ export const Section = styled.div`
   background: ${({ background }) => background || "whitesmoke"};
   padding: 20px;
   border-radius: 10px;
+  width: ${({ width }) => width || "none"};
 `;
 
 export const SubSection = styled.div`

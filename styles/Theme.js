@@ -40,4 +40,18 @@ export const GlobalStyle = createGlobalStyle`
     max-width: 90%;
     margin-bottom: 20px;
   }
+
+  input { 
+    -webkit-appearance: none;
+    box-shadow: none;
+    border: none;
+    border-radius: 4px;
+    padding: 4px;
+    margin-bottom: 10px;
+  }
+
+  button {
+    
+  }
+
  `;
