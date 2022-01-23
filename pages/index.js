@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import Meta from "@root/components/core/Meta";
 
+import { Inner } from "@root/styles/Global";
+import { Wrapper } from "./home.style";
+
 const meta = {
   name: "Microbiome studio - Accueil",
   description:
@@ -9,10 +12,14 @@ const meta = {
 
 export default function Home() {
   return (
-    <div>
-      <h1>Microbiome Studio</h1>
+    <Inner>
       <Meta meta={meta} />
-      <div>Youpi c'est la home</div>
-    </div>
+      <Wrapper>
+        <h1>Microbiome Studio</h1>
+        <ul>
+          <li></li>
+        </ul>
+      </Wrapper>
+    </Inner>
   );
 }

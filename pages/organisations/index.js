@@ -2,6 +2,7 @@ import React from "react";
 import { getOrganizations } from "@services/organizations";
 import Organizations from "@components/organizations/Organizations";
 import Meta from "@root/components/core/Meta";
+import { Inner } from "@root/styles/Global";
 
 const meta = {
   name: "Microbiome studio - organisations",
@@ -10,10 +11,10 @@ const meta = {
 
 export default function index({ organizations }) {
   return (
-    <div>
+    <Inner>
       <Meta meta={meta} />
       <Organizations organizations={organizations} />
-    </div>
+    </Inner>
   );
 }
 

@@ -1,10 +1,14 @@
 import Meta from "@root/components/core/Meta";
+import CreateProject from "@root/components/form/CreateProject";
+import { Inner, Section, TitleSection } from "@root/styles/Global";
 import { getMember, getMembers } from "@services/members";
 import React from "react";
 
 export default function index({ member }) {
-  const { last_name, first_name, email, organization } = member;
+  const { last_name, first_name, email, id, projects, organization } = member;
   const organizationName = organization.name;
+
+  const projectsDisplay = projects.map((project) => <p>{project.code}</p>);
 
   const meta = {
     name: `Microbiome studio - ${last_name} ${first_name}`,
@@ -12,12 +16,23 @@ export default function index({ member }) {
   };
 
   return (
-    <div>
+    <Inner>
       <Meta meta={meta} />
-      <h1>{`${last_name} ${first_name}`}</h1>
-      <p>contact: {email}</p>
-      <p>entreprise: {organizationName}</p>
-    </div>
+      <Section>
+        <h1>{`${first_name} ${last_name}`}</h1>
+        <p>{organizationName}</p>
+        <p>contact: {email}</p>
+      </Section>
+      {projects.length > 0 && (
+        <Section>
+          <TitleSection>Projets:</TitleSection>
+          {projectsDisplay}
+        </Section>
+      )}
+      <Section>
+        <CreateProject member={member} />
+      </Section>
+    </Inner>
   );
 }
 
@@ -41,5 +56,6 @@ export const getStaticProps = async (context) => {
 
   return {
     props: { member },
+    revalidate: 1,
   };
 };

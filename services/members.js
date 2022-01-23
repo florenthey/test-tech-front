@@ -18,8 +18,21 @@ const getMember = async (id) => {
 
     return data.data;
   } catch (error) {
-    console.error("error-get-organization", error);
+    console.error("error-get-member", error);
   }
 };
 
-export { getMembers, getMember };
+const createProjectForMember = async (id, body) => {
+  try {
+    const data = await Axios.post(
+      `http://0.0.0.0:4557/api/v1/users/${id}/projects/`,
+      body
+    );
+
+    return data.data;
+  } catch (error) {
+    console.error("error-post-project", error);
+  }
+};
+
+export { getMembers, getMember, createProjectForMember };

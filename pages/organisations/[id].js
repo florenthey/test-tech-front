@@ -2,6 +2,7 @@ import React from "react";
 import Members from "@components/members/Members";
 import Meta from "@root/components/core/Meta";
 import { getOrganization, getOrganizations } from "@services/organizations";
+import { Inner, Section, TitleSection } from "@root/styles/Global";
 
 export default function index({ organization }) {
   const { name, description, members } = organization;
@@ -11,13 +12,18 @@ export default function index({ organization }) {
   };
 
   return (
-    <div>
+    <Inner>
       <Meta meta={meta} />
       <h1>{name}</h1>
-      <p>{description}</p>
-      <p>membres:</p>
-      <Members members={members} />
-    </div>
+      <Section>
+        <TitleSection>Presentation</TitleSection>
+        <p>{description}</p>
+      </Section>
+      <Section>
+        <TitleSection>L'équipe</TitleSection>
+        <Members members={members} />
+      </Section>
+    </Inner>
   );
 }
 

@@ -10,8 +10,3 @@ export const List = styled.div`
   gap: 50px;
   flex-wrap: wrap;
 `;
-
-export const Card = styled.div`
-  display: flex;
-  flex-direction: column;
-`;

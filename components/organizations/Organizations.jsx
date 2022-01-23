@@ -1,24 +1,20 @@
+import { A, Section } from "@root/styles/Global";
 import Link from "next/link";
 import React from "react";
-import { Wrapper, List, Card } from "./organizations.style";
+import { Wrapper, List } from "./organizations.style";
 
 export default function Organizations({ organizations }) {
   const organizationsDisplay = organizations?.map((organization) => {
     const { name, description, id } = organization;
-    const prettyName = name.toLowerCase().trim().replace(/\s/g, "-");
 
     return (
-      <Card>
+      <Section>
         <h2>{name}</h2>
         <p>{description}</p>
-        <Link
-          // as={`/organisations/${id}/${prettyName}`}
-          href={`/organisations/${id}`}
-          passHref
-        >
-          <a>Acceder à la l'organisation</a>
+        <Link href={`/organisations/${id}`} passHref>
+          <A>Acceder à {name}</A>
         </Link>
-      </Card>
+      </Section>
     );
   });
 

@@ -3,6 +3,9 @@ import Members from "@components/members/Members";
 import Meta from "@root/components/core/Meta";
 import { getMembers } from "@services/members";
 import { getOrganizations } from "@root/services/organizations";
+import { Inner } from "@styles/Global";
+
+import { useForm } from "react-hook-form";
 
 const meta = {
   name: "Microbiome studio - membres",
@@ -10,37 +13,41 @@ const meta = {
 };
 
 export default function index({ members, organizations }) {
-  const [organizationId, setOrganizationId] = useState(null);
   const [filteredMembers, setFilteredMembers] = useState();
+
+  const { register, watch } = useForm();
+  const filterValue = watch("filters");
 
   const filters = organizations.map((organisation) => {
     const { name, id } = organisation;
-
-    return <button onClick={() => setOrganizationId(id)}>{name}</button>;
+    return <option value={id}>{name}</option>;
   });
 
-  filters.unshift(
-    <button onClick={() => setOrganizationId(null)}>Tout les membres</button>
-  );
+  filters.unshift(<option value={0}>Tout les membres</option>);
 
   useEffect(() => {
-    if (organizationId !== null) {
+    if (filterValue !== "0" && filterValue !== 0) {
       const filterMembers = members?.filter((member) => {
-        return member.organization.id === organizationId;
+        return member.organization.id === parseInt(filterValue, 10);
       });
       setFilteredMembers(filterMembers);
     } else {
       setFilteredMembers(members);
     }
-  }, [organizationId]);
+  }, [filterValue]);
 
   return (
-    <div>
+    <Inner>
       <Meta meta={meta} />
-      <h1>Members</h1>
-      {filters}
+      <h1>Membres</h1>
+      <form>
+        <select defaultValue={0} name="filters" {...register("filters")}>
+          <option value="">filtrer par organisation:</option>
+          {filters}
+        </select>
+      </form>
       <Members members={filteredMembers} />
-    </div>
+    </Inner>
   );
 }
 
