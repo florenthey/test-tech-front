@@ -5,14 +5,16 @@ import { prettyName } from "@utils/upperCase";
 
 export default function Members({ members }) {
   const membersList = members?.map((member) => {
-    console.log(member);
     const { first_name, last_name, email, id } = member;
+
     return (
       <li>
         <SubSection background="#d9d7d7" flexDirection="row">
-          <p>
-            <b>{prettyName(last_name)}</b> {prettyName(first_name)}
-          </p>
+          <Link href={`/membres/${id}`} passHref>
+            <A color="#a13580">
+              <b>{prettyName(last_name)}</b> {prettyName(first_name)}
+            </A>
+          </Link>
           <p>{email}</p>
           <Link href={`/membres/${id}`} passHref>
             <A>Accéder au profil</A>

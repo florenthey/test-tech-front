@@ -1,20 +1,20 @@
 import Meta from "@root/components/core/Meta";
 import CreateProject from "@root/components/form/CreateProject";
-import {
-  Inner,
-  Section,
-  TitleSection,
-  WrapperSection,
-} from "@root/styles/Global";
+import { Inner, Section, WrapperSection } from "@root/styles/Global";
 import { prettyName } from "@root/utils/upperCase";
 import { getMember, getMembers } from "@services/members";
 import React from "react";
 
 export default function index({ member }) {
-  const { last_name, first_name, email, id, projects, organization } = member;
+  const { last_name, first_name, email, projects, organization } = member;
   const organizationName = organization.name;
 
-  const projectsDisplay = projects.map((project) => <p>{project.code}</p>);
+  const projectsDisplay =
+    projects.length > 0 ? (
+      projects.map((project) => <p>{prettyName(project.code)}</p>)
+    ) : (
+      <p>Pas de projet</p>
+    );
 
   const meta = {
     name: `Microbiome studio - ${last_name} ${first_name}`,
@@ -32,12 +32,12 @@ export default function index({ member }) {
           <p>{organizationName}</p>
           <p>contact: {email}</p>
         </Section>
-        {projects.length > 0 && (
-          <Section>
-            <TitleSection>Projets:</TitleSection>
-            {projectsDisplay}
-          </Section>
-        )}
+
+        <Section>
+          <h2>Projets</h2>
+          {projectsDisplay}
+        </Section>
+
         <Section>
           <CreateProject member={member} />
         </Section>
@@ -50,7 +50,7 @@ export const getStaticPaths = async () => {
   const members = await getMembers(0, 100).then((response) => response);
   const paths = members.map((member) => {
     return {
-      params: { id: member.id.toString() },
+      params: { id: member?.id?.toString() },
     };
   });
 
@@ -66,6 +66,5 @@ export const getStaticProps = async (context) => {
 
   return {
     props: { member },
-    revalidate: 1,
   };
 };

@@ -15,7 +15,7 @@ const getMembers = async (skip, limit) => {
 const getMember = async (id) => {
   try {
     const data = await Axios.get(`http://0.0.0.0:4557/api/v1/users/${id}`);
-
+    console.log("REQUEST", data.data);
     return data.data;
   } catch (error) {
     console.error("error-get-member", error);

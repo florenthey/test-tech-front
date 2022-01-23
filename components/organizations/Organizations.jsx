@@ -10,7 +10,11 @@ export default function Organizations({ organizations }) {
 
     return (
       <Section>
-        <h2>{prettyName(name)}</h2>
+        <h2>
+          <Link href={`/organisations/${id}`} passHref>
+            <a> {prettyName(name)}</a>
+          </Link>
+        </h2>
         <p>{description}</p>
         <Link href={`/organisations/${id}`} passHref>
           <A>Accedér à {prettyName(name)}</A>

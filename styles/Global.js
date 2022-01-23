@@ -36,7 +36,7 @@ export const SubSection = styled.div`
 `;
 
 export const A = styled.a`
-  color: #ec5990;
+  color: ${({ color }) => color || "#ec5990"};
 `;
 
 export const Select = styled.select`

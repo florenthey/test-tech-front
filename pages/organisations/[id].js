@@ -2,12 +2,7 @@ import React from "react";
 import Members from "@components/members/Members";
 import Meta from "@root/components/core/Meta";
 import { getOrganization, getOrganizations } from "@services/organizations";
-import {
-  Inner,
-  WrapperSection,
-  Section,
-  TitleSection,
-} from "@root/styles/Global";
+import { Inner, WrapperSection, Section } from "@root/styles/Global";
 import { prettyName } from "@utils/upperCase";
 
 export default function index({ organization }) {
