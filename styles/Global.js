@@ -1,9 +1,6 @@
 import styled from "styled-components";
 
 export const Inner = styled.div`
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center; */
   max-width: ${(props) => props.theme.maxWidth};
   margin: 0 auto;
 `;
@@ -26,11 +23,18 @@ export const WrapperDoubleSection = styled.div`
 export const Section = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: ${({ alignItems }) => alignItems || "none"};
+  box-shadow: ${({ boxShadow }) => boxShadow || "none"};
+  transition: ${({ transition }) => transition || "none"};
   gap: ${({ gap }) => gap || "none"};
   background: ${({ background }) => background || "whitesmoke"};
   padding: 20px;
   border-radius: 10px;
   width: ${({ width }) => width || "none"};
+
+  &:hover {
+    box-shadow: ${({ hoverBoxShadow }) => hoverBoxShadow || "none"};
+  }
 `;
 
 export const SubSection = styled.div`
@@ -42,7 +46,13 @@ export const SubSection = styled.div`
   padding: 15px 15px 15px 0;
   border-radius: 8px;
   padding: 10px;
-  margin: 5px;
+  margin: 20px;
+  box-shadow: 4px 4px 2px 1px rgba(0, 0, 255, 0.2);
+  transition: 0.2s;
+
+  &:hover {
+    box-shadow: 8px 8px 2px 1px rgba(0, 0, 255, 0.2);
+  }
 `;
 
 export const A = styled.a`
@@ -54,4 +64,8 @@ export const Select = styled.select`
   border-radius: 4px;
   padding: 2px;
   margin-bottom: 10px;
+`;
+
+export const Text = styled.p`
+  color: ${({ color }) => color || "#ec5990"};
 `;

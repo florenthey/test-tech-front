@@ -6,3 +6,7 @@ export const Wrapper = styled.div`
   gap: 35px;
   margin: 10px 20px 50px 20px;
 `;
+
+export const A = styled.a`
+  font-family: "Raleway", sans-serif;
+`;

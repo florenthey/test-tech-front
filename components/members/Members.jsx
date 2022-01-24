@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { A, Section, SubSection } from "@root/styles/Global";
+import { Section, SubSection, Text } from "@root/styles/Global";
 import { prettyName } from "@utils/upperCase";
 
 export default function Members({ members }) {
@@ -9,17 +9,19 @@ export default function Members({ members }) {
 
     return (
       <li>
-        <SubSection flexDirection="row">
-          <Link href={`/membres/${id}`} passHref>
-            <A color="#a13580">
-              <b>{prettyName(last_name)}</b> {prettyName(first_name)}
-            </A>
-          </Link>
-          <p>{email}</p>
-          <Link href={`/membres/${id}`} passHref>
-            <A>Accéder au profil</A>
-          </Link>
-        </SubSection>
+        <Link href={`/membres/${id}`} passHref>
+          <a>
+            <SubSection flexDirection="row">
+              <div>
+                <Text color="#a13580">
+                  <b>{prettyName(last_name)}</b> {prettyName(first_name)}
+                </Text>
+              </div>
+              <Text color="black">{email}</Text>
+              <Text>Accéder au profil</Text>
+            </SubSection>
+          </a>
+        </Link>
       </li>
     );
   });

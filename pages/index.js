@@ -1,9 +1,14 @@
 import Meta from "@root/components/core/Meta";
 
-import { A, Inner } from "@root/styles/Global";
-import { Wrapper, PagesSection, PageSection } from "./home.style";
+import { A, Inner, Section } from "@root/styles/Global";
+import {
+  Title,
+  Subtitle,
+  Wrapper,
+  PagesSection,
+  PageSection,
+} from "./home.style";
 import Link from "next/link";
-import { prettyName } from "@root/utils/upperCase";
 import Image from "next/image";
 
 const meta = {
@@ -26,26 +31,28 @@ const pageSectionsDisplay = pagesSections.map((pageSection) => {
   const { title, img, path } = pageSection;
 
   return (
-    <PageSection>
-      <h3>{prettyName(title)}</h3>
-      <Image src={img} height="190px" width="285px" />
-      <Link href={path} passHref>
-        <A>Accéder à la liste des {title}</A>
-      </Link>
-    </PageSection>
+    <Link href={path} passHref>
+      <A>
+        <PageSection>
+          <Image src={img} height="190px" width="285px" />
+          <p></p>Accéder à la liste des {title}
+        </PageSection>
+      </A>
+    </Link>
   );
 });
 
 export default function Home() {
   return (
     <Inner>
-      <Meta meta={meta} />
-      <Wrapper>
-        <h1>MiCROBIOME STUDIO</h1>
-        <h2>APPLICATION DE GESTION DE PROJETS</h2>
-        {/* Replace by a carousel of the latest projects */}
-        <PagesSection>{pageSectionsDisplay}</PagesSection>
-      </Wrapper>
+      <Section id="home" background="unset" alignItems="center">
+        <Meta meta={meta} />
+        <Wrapper>
+          <Title>MiCROBIOME STUDIO</Title>
+          <Subtitle>APPLICATION DE GESTION DE PROJETS</Subtitle>
+          <PagesSection>{pageSectionsDisplay}</PagesSection>
+        </Wrapper>
+      </Section>
     </Inner>
   );
 }

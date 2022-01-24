@@ -24,6 +24,7 @@ export const GlobalStyle = createGlobalStyle`
     text-align:center;
     margin-bottom: 50px;
     color: #a13580;
+    font-family: "Raleway", sans-serif;
   }
 
   h2 {
