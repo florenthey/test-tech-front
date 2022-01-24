@@ -9,7 +9,7 @@ export default function Members({ members }) {
 
     return (
       <li>
-        <SubSection background="#d9d7d7" flexDirection="row">
+        <SubSection flexDirection="row">
           <Link href={`/membres/${id}`} passHref>
             <A color="#a13580">
               <b>{prettyName(last_name)}</b> {prettyName(first_name)}

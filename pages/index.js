@@ -4,6 +4,7 @@ import { A, Inner } from "@root/styles/Global";
 import { Wrapper, PagesSection, PageSection } from "./home.style";
 import Link from "next/link";
 import { prettyName } from "@root/utils/upperCase";
+import Image from "next/image";
 
 const meta = {
   name: "Microbiome studio - Accueil",
@@ -27,7 +28,7 @@ const pageSectionsDisplay = pagesSections.map((pageSection) => {
   return (
     <PageSection>
       <h3>{prettyName(title)}</h3>
-      <img src={img} />
+      <Image src={img} height="190px" width="285px" />
       <Link href={path} passHref>
         <A>Accéder à la liste des {title}</A>
       </Link>

@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const Inner = styled.div`
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: center; */
   max-width: ${(props) => props.theme.maxWidth};
-  margin: auto 50px;
+  margin: 0 auto;
 `;
 
 export const WrapperSection = styled.div`
@@ -38,7 +38,7 @@ export const SubSection = styled.div`
   flex-direction: ${({ flexDirection }) => flexDirection || "column"};
   justify-content: space-between;
   align-items: center;
-  background: ${({ background }) => background || "whitesmoke"};
+  background: ${({ background }) => background || "#ebebeb"};
   padding: 15px 15px 15px 0;
   border-radius: 8px;
   padding: 10px;

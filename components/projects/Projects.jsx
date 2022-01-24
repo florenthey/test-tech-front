@@ -8,7 +8,7 @@ export default function Projects({ projects }) {
     const { code, description, id } = project;
     return (
       <li>
-        <SubSection background="#d9d7d7" flexDirection="row">
+        <SubSection flexDirection="row">
           <Link href={`/projets/${id}`} passHref>
             <A color="#a13580">
               <b>{prettyName(code)}</b>
