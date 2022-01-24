@@ -7,6 +7,7 @@ import {
   Wrapper,
   PagesSection,
   PageSection,
+  LogoTitleWrapper,
 } from "./home.style";
 import Link from "next/link";
 import Image from "next/image";
@@ -48,7 +49,10 @@ export default function Home() {
       <Section id="home" background="unset" alignItems="center">
         <Meta meta={meta} />
         <Wrapper>
-          <Title>MiCROBIOME STUDIO</Title>
+          <LogoTitleWrapper>
+            <Image src="/images/logo.webp" height="87px" width="66px" />{" "}
+            <Title>MiCROBIOME STUDIO</Title>
+          </LogoTitleWrapper>
           <Subtitle>APPLICATION DE GESTION DE PROJETS</Subtitle>
           <PagesSection>{pageSectionsDisplay}</PagesSection>
         </Wrapper>
