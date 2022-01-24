@@ -8,26 +8,22 @@ import {
 } from "@root/styles/Global";
 import { prettyName } from "@root/utils/upperCase";
 import { getMember, getMembers } from "@services/members";
-import { useRouter } from "next/router";
-import React from "react";
+import React, { useState } from "react";
 
 export default function index({ member }) {
-  const { last_name, first_name, email, projects, id, organization } = member;
+  const { last_name, first_name, email, projects, organization } = member;
+  const [memberProject, setMemberProject] = useState(projects);
+
   const organizationName = organization.name;
-  const router = useRouter();
 
   const meta = {
     name: `Microbiome studio - ${last_name} ${first_name}`,
     description: `Profil de ${last_name} ${first_name}, membre de l'organisation ${organizationName}`,
   };
 
-  const refreshData = () => {
-    router.replace(router.asPath);
-  };
-
   const projectsDisplay =
-    projects.length > 0 ? (
-      projects.map((project) => <p>{prettyName(project.code)}</p>)
+    memberProject.length > 0 ? (
+      memberProject.map((project) => <p>{prettyName(project.code)}</p>)
     ) : (
       <p>Pas de projet</p>
     );
@@ -45,7 +41,11 @@ export default function index({ member }) {
             <p>{email}</p>
           </Section>
           <Section background="#ec5990">
-            <CreateProject member={member} refreshData={refreshData} />
+            <CreateProject
+              member={member}
+              memberProject={memberProject}
+              setMemberProject={setMemberProject}
+            />
           </Section>
         </WrapperDoubleSection>
         <Section>

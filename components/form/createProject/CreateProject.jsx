@@ -3,7 +3,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { Wrapper } from "./createProject.style";
 
-export default function AddProject({ member, refreshData }) {
+export default function AddProject({ member, setMemberProject }) {
   const { register, handleSubmit } = useForm();
   const { id } = member;
 
@@ -13,8 +13,10 @@ export default function AddProject({ member, refreshData }) {
       code: code,
       description: description,
     };
-    await createProjectForMember(id, body);
-    await refreshData();
+
+    await createProjectForMember(id, body).then((response) => {
+      setMemberProject((prevState) => [...prevState, response]);
+    });
   };
 
   return (
